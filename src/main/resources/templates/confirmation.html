@@ -76,10 +76,10 @@
     <h1 class="mt-5">Booking Confirmation</h1>
     <p>Your booking has been confirmed.</p>
     <p>Reservation ID: <span th:text="${reservation.id}"></span></p>
-    <p>Bus Number: B6 <span th:text="${reservation.bus.busNumber}"></span></p>
-    <p>From: Mumbai  <span th:text="${reservation.bus.fromDestination}"></span></p>
-    <p>To: Pune<span th:text="${reservation.bus.toDestination}"></span></p>
-    <p>Departure Time:12 pm <span th:text="${reservation.bus.departureTime}"></span></p>
+    <p>Bus Number:  <span th:text="${reservation.bus.busNumber}"></span></p>
+    <p>From:   <span th:text="${reservation.bus.fromDestination}"></span></p>
+    <p>To: <span th:text="${reservation.bus.toDestination}"></span></p>
+    <p>Departure Time: <span th:text="${reservation.bus.departureTime}"></span></p>
     <p>Booking Time: <span th:text="${reservation.bookingTime}"></span></p>
 </div>
 
