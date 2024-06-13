@@ -32,6 +32,11 @@
         .article-list .item .action {
             color: #007bff;
         }
+         .greeting {
+            color: #007bff; /* Primary color for text */
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -47,6 +52,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addBus}"><h4>Add Bus</h4></a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/searchBus}"><h4>Search Bus</h4></a>
@@ -67,6 +75,10 @@
     </div>
 </nav>
 <br><br>
+
+<div class="container">
+    <h1 class="greeting"> <b >Hi, Welcome <span th:text ="*{userDetails}"></span></b> </h1>
+</div>
 <div class="article-list">
     <div class="container">
         <div class="intro">

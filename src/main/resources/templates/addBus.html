@@ -26,6 +26,11 @@
         .form-container .form-group label {
             color: #343a40;
         }
+        .greeting {
+            color: #007bff; /* Primary color for text */
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -41,6 +46,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addBus}"><h4>Add Bus</h4></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/searchBus}"><h4>Search Bus</h4></a>
                 </li>
@@ -60,6 +68,9 @@
     </div>
 </nav>
 <br><br>
+<div class="container">
+    <h1 class="greeting"> <b >Hi, Welcome <span th:text ="*{userDetails}"></span></b> </h1>
+</div>
 
 <div class="container form-container">
     <h1 class="mt-5">Add Bus</h1>
@@ -77,12 +88,20 @@
             <input type="text" th:field="*{toDestination}" class="form-control" id="toDestination" placeholder="To Destination">
         </div>
         <div class="form-group">
-            <label for="departureTime">Departure Time</label>
-            <input type="text" th:field="*{departureTime}" class="form-control" id="departureTime" placeholder="Departure Time">
+            <label for="time">Departure Time</label>
+            <input type="time" th:field="*{departureTime}" class="form-control" id="time" placeholder="Departure Time">
         </div>
         <div class="form-group">
             <label for="availableSeats">Available Seats</label>
             <input type="number" th:field="*{availableSeats}" class="form-control" id="availableSeats" placeholder="Available Seats">
+        </div>
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" th:field="*{date}" class="form-control" id="date" placeholder="Date">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" th:field="*{price}" class="form-control" id="price" placeholder="price">
         </div>
         <button type="submit" class="btn btn-primary">Add Bus</button>
     </form>

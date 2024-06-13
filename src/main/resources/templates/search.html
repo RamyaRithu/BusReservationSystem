@@ -24,6 +24,11 @@
         .content-container h1 {
             color: #343a40;
         }
+        .greeting {
+            color: #007bff; /* Primary color for text */
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -38,6 +43,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addBus}"><h4>Add Bus</h4></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/searchBus}"><h4>Search Bus</h4></a>
                 </li>
@@ -57,6 +65,9 @@
     </div>
 </nav>
 <br><br>
+<div class="container">
+    <h1 class="greeting"> <b >Hi, Welcome <span th:text ="*{userDetails}"></span></b> </h1>
+</div>
 
 <div class="container content-container">
     <h1 class="mt-5">Welcome</h1>
@@ -69,9 +80,10 @@
             <label for="to" class="sr-only">To</label>
             <input type="text" name="to" class="form-control" id="to" placeholder="To" required>
         </div>
+
         <button type="submit" class="btn btn-primary mb-2">Search Buses</button>
     </form>
-    <a th:href="@{/addBus}" class="btn btn-secondary mt-3">Add Bus</a>
+   <!-- <a th:href="@{/addBus}" class="btn btn-secondary mt-3">Add Bus</a>-->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

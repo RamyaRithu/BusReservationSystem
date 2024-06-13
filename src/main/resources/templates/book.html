@@ -23,6 +23,11 @@
         .form-container h1 {
             color: #343a40;
         }
+        .greeting {
+            color: #007bff; /* Primary color for text */
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -38,6 +43,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addBus}"><h4>Add Bus</h4></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/searchBus}"><h4>Search Bus</h4></a>
                 </li>
@@ -57,12 +65,15 @@
     </div>
 </nav>
 <br><br>
+<div class="container">
+    <h1 class="greeting"> <b >Hi, Welcome <span th:text ="*{userDetails}"></span></b> </h1>
+</div>
 
 <div class="container form-container">
     <h1 class="mt-5">Book Ticket</h1>
     <form action="#" th:action="@{/book}" method="post" class="mt-3">
-        <input type="hidden" name="userId" th:value="${userId}" />
-        <input type="hidden" name="busId" th:value="${busId}" />
+        <input type="" name="userId" th:value="${userId}" />
+        <input type="" name="busId" th:value="${busId}" />
         <button type="submit" class="btn btn-primary">Confirm Booking</button>
     </form>
 </div>

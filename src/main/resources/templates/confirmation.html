@@ -26,6 +26,11 @@
         .content-container p {
             font-size: 1.2em;
         }
+        .greeting {
+            color: #007bff; /* Primary color for text */
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -41,6 +46,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/addBus}"><h4>Add Bus</h4></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/searchBus}"><h4>Search Bus</h4></a>
                 </li>
@@ -60,14 +68,17 @@
     </div>
 </nav>
 <br><br>
+<div class="container">
+    <h1 class="greeting"> <b >Hi, Welcome <span th:text ="*{userDetails}"></span></b> </h1>
+</div>
 
 <div class="container content-container">
     <h1 class="mt-5">Booking Confirmation</h1>
     <p>Your booking has been confirmed.</p>
     <p>Reservation ID: <span th:text="${reservation.id}"></span></p>
-    <p>Bus Number:  <span th:text="${reservation.bus.busNumber}"></span></p>
-    <p>From:   <span th:text="${reservation.bus.fromDestination}"></span></p>
-    <p>To: <span th:text="${reservation.bus.toDestination}"></span></p>
+    <p>Bus Number: B6 <span th:text="${reservation.bus.busNumber}"></span></p>
+    <p>From: Mumbai  <span th:text="${reservation.bus.fromDestination}"></span></p>
+    <p>To: Pune<span th:text="${reservation.bus.toDestination}"></span></p>
     <p>Departure Time:12 pm <span th:text="${reservation.bus.departureTime}"></span></p>
     <p>Booking Time: <span th:text="${reservation.bookingTime}"></span></p>
 </div>

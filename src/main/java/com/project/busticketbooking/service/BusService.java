@@ -5,6 +5,8 @@ import com.project.busticketbooking.repository.BusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 
@@ -13,7 +15,7 @@ public class BusService {
     @Autowired
     private BusRepository busRepository;
 
-    public List<Bus> searchBuses(String from, String to) {
+    public List<Bus> searchBuses(String from, String to ) {
         return busRepository.findByFromDestinationAndToDestination(from, to);
     }
 

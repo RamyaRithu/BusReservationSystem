@@ -4,8 +4,13 @@ import com.project.busticketbooking.model.Bus;
 import com.project.busticketbooking.model.Reservation;
 import com.project.busticketbooking.model.User;
 
+import com.project.busticketbooking.repository.UserRepository;
+import com.project.busticketbooking.service.BusService;
 import com.project.busticketbooking.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +23,18 @@ import java.util.Optional;
 public class ReservationController {
     @Autowired
     private ReservationService reservationService;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private BusService busService;
+
 
     @GetMapping("/book")
     public String showBookingPage(@RequestParam Long busId, @RequestParam Long userId, Model model) {
         model.addAttribute("busId", busId);
         model.addAttribute("userId", userId);
+        String user= returnUsername();
+        model.addAttribute("userDetails", user);
         return "book";
     }
     /*@GetMapping("/confirmation/{id}")
@@ -39,9 +51,12 @@ public class ReservationController {
         reservation.getUser().setId(userId);
         reservation.setBus(new Bus());
         reservation.getBus().setId(busId);
+
         reservation.setBookingTime(LocalDateTime.now());
         reservationService.bookTicket(reservation);
         model.addAttribute("reservation", reservation);
+        String user= returnUsername();
+        model.addAttribute("userDetails", user);
         return "confirmation";
     }
     @GetMapping("/confirmation/{id}")
@@ -57,6 +72,8 @@ public class ReservationController {
             System.out.println("Departure Time: " + reservation.getBus().getDepartureTime());
 
             model.addAttribute("reservation", reservation);
+            String user= returnUsername();
+            model.addAttribute("userDetails", user);
         } else {
             // Handle the case where the reservation is not found
             System.out.println("Reservation not found with ID: " + reservationId);
@@ -65,6 +82,12 @@ public class ReservationController {
         }
 
         return "confirmation";
+    }
+    private String returnUsername() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        UserDetails user = (UserDetails) securityContext.getAuthentication().getPrincipal();
+        User users = userRepository.findByEmail(user.getUsername());
+        return users.getFirstName();
     }
 
 }

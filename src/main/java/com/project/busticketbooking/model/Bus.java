@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -23,6 +24,9 @@ public class Bus {
     private String toDestination;
     private String departureTime;
     private int availableSeats;
+    private String date;
+    private  Long price;
+
     @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reservation> reservations;
 
